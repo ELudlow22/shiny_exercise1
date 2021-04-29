@@ -13,15 +13,15 @@ library(shiny)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Old Faithful Geyser, Yellowstone Data"),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
             sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
+                        "Number of classes:",
+                        min = 10,
+                        max = 30,
                         value = 30)
         ),
 
@@ -41,9 +41,14 @@ server <- function(input, output) {
         bins <- seq(min(x), max(x), length.out = input$bins + 1)
 
         # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+        hist(x, breaks = bins, col = 'red', border = 'white')
     })
 }
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
+
+ui
+
+server
